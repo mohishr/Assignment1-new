@@ -1,0 +1,1 @@
+﻿global using Assignment1.Entities;
