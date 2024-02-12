@@ -63,7 +63,21 @@ namespace Assignment1.API.Controllers
             var result = await _machineService.GetMachineTypesForAssetAsync(asset);
             return StatusCode(result.Status, result);
         }
-        [HttpPut("{machineType}/updateAsset")]
+
+        /// <summary>
+        /// Returns the list of machine types.
+        /// </summary>
+        /// <returns>The list of machine types.</returns>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(500)]
+        [HttpGet]
+        public async Task<IActionResult> GetAllMachinesAsync()
+        {
+            var result = await _machineService.GetAllMachinesAsync();
+            return StatusCode(result.Status, result);
+        }
+
+        /*[HttpPut("{machineType}/updateAsset")]
 
         ///<summary>
         ///Add or update asset in machine
@@ -78,6 +92,6 @@ namespace Assignment1.API.Controllers
         {
             var result = await _machineService.AddOrUpdateAssetToMachineAsync(machineType, asset);
             return StatusCode(result.Status, result);
-        }
+        }*/
     }
 }

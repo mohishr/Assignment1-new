@@ -1,0 +1,31 @@
+﻿@using Assignment1.UI.Models
+@using MudBlazor
+
+<div style="padding:0 100px; margin-top:50px;">
+    <MudTabs Elevation="4" Rounded="true" Centered="true" Color="@Color.Primary" Style="margin-bottom:10px">
+        <MudTabPanel OnClick="async()=>{ Machines.Clear();GetAllMachines();}" Text="All Machines">
+            <MachineList Machines="Machines" />
+        </MudTabPanel>
+        <MudTabPanel OnClick="()=>{Machines.Clear();StateHasChanged();}" Text="Machine with Asset">
+            <div style="display:flex;">
+                <MudTextField @bind-Value="asset.Name" Immediate="true" Label="Asset Name" Variant="Variant.Outlined"></MudTextField>
+                <MudTextField @bind-Value="asset.SeriesNumber" Immediate="true" Label="Series" Variant="Variant.Outlined"></MudTextField>
+                <MudButton Variant="Variant.Filled" OnClick="()=>GetMachineByAsset()" Color="Color.Secondary" Disabled="assetFetchFlag">Get Machines</MudButton>
+            </div>
+            <MachineList Machines="Machines" />
+        </MudTabPanel>
+        <MudTabPanel OnClick="()=>{
+                         Machines.Clear();
+                            StateHasChanged();
+                         GetLatestMachines();
+                     }"
+                     Text="Machine with latest Assets">
+            <MachineList Machines="Machines" />
+        </MudTabPanel>
+    </MudTabs>
+
+</div>
+@code
+{
+
+}

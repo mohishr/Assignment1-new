@@ -8,5 +8,6 @@
         Task<ServiceResponse<IEnumerable<Asset>>> GetAssetsForMachineAsync(string machineType);
         Task<ServiceResponse<IEnumerable<string>>> GetMachineTypesForAssetAsync(Asset asset);
         Task<ServiceResponse<IEnumerable<string>>> GetMachinesUsingLatestSeriesAsync();
+        Task<ServiceResponse<IEnumerable<string>>> GetAllMachinesAsync();
     }
 }

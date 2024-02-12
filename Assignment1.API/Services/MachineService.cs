@@ -192,6 +192,27 @@ namespace Assignment1.API.Services
             return serviceResponse;
         }
 
+        public async Task<ServiceResponse<IEnumerable<string>>> GetAllMachinesAsync()
+        {
+            var serviceResponse = new ServiceResponse<IEnumerable<string>>();
+            try
+            {
+                var res = await _machineRepository.GetAllMachinesAsync();
+                serviceResponse.Data = res.Select(m => m.Type);
+                serviceResponse.Status = 200;
+                serviceResponse.Success = true;
+                serviceResponse.Message = "List of all available machines";
+            }
+            catch (Exception ex){
+                serviceResponse.Status = 500;
+                serviceResponse.Message = ex.Message;
+
+            }
+
+            return serviceResponse;
+
+        }
+
         private void UpdateLatestAssetsList(List<Asset> assets)
         {
             foreach (Asset asset in assets)
